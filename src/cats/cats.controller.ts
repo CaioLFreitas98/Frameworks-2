@@ -1,18 +1,43 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { CatsService } from './cats.service';
+import { CreateCatsDto } from './dto/cats.dto';
+
 
 @Controller('cats')
 export class CatsController {
+    constructor(private catsService: CatsService) {}
+
     @Get()
-        findAll():string{
-        return" estou ouvindo cats...";
+        async findAll(): Promise<CreateCatsDto[]> {
+        return this.catsService.findAll();
         }
     
-    @Get('nome')
-        create(): string {
-        return 'seu nome é bichano';
+    @Get(':id')
+        getone(@Param ()params): string {
+        console.log (params.id)   
+        return `seu nome é #${params.id} bichano`;
         }
-        
+    @Post()
+    async create(@Body()createCatDto: CreateCatsDto):Promise<String>{
+    //     return `Estou criando um gato #${createCatDto.name} anos chamado #${createCatDto.name}` ;
+    this.catsService.create(createCatDto)
+    return "algo"
+     }
+    @Get('find-id')       
+    findOneMore(@Param(`id`)id: number):string{
+    return `Encontrei outro cat ${id}`
+    }
+    @Put(':id')
+    update():string{
+        return `update cat...`
+    }
+    @Delete(':id')
+    delete():string{
+        return`delete cat`
+    }
+
 }
+
 
 
 
