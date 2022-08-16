@@ -9,7 +9,19 @@ export class DogsService {
         this.dogs.push(dog);
     }
 
-    findAll(): CreateDogsDto[]{
+    
+    findAll():CreateDogsDto[]{
+    //buscara todos elementos do bd
         return this.dogs;
     }
+    findOne(id: number){
+        return 'one cat'
+      }
+    remove(id: number){
+        return ' dog delete '
+      }
+    update (CreateDogsDto: CreateDogsDto){
+        const cat = this.findOne(CreateDogsDto.id);
+    }
+
 }
