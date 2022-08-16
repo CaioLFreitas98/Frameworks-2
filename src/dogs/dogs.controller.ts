@@ -27,13 +27,13 @@ export class DogsController {
         findOneMore(@Param(`id`)id: number):string{
         return `Encontrei outro dog${id}`
         }
-    @Put(':id')
-        update():string{
-        return `update cat...`
-         }
+        @Put(':id')
+        update(@Param('id') id: string, @Body() createDogsDto: CreateDogsDto) {
+        return `This action updates a #${id} dog`;
+        }
     @Delete(':id')
-        delete():string{
-        return`delete cat`
-    }
+        remove(@Param('id') id: string) {
+        return `This action removes a #${id} dog`;
+        }
 
     }

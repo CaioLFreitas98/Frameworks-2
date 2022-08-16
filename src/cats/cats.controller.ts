@@ -18,23 +18,27 @@ export class CatsController {
         return `seu nome é #${params.id} bichano`;
         }
     @Post()
-    async create(@Body()createCatDto: CreateCatsDto):Promise<String>{
+        async create(@Body()createCatDto: CreateCatsDto):Promise<String>{
     //     return `Estou criando um gato #${createCatDto.name} anos chamado #${createCatDto.name}` ;
-    this.catsService.create(createCatDto)
-    return "algo"
-     }
+        this.catsService.create(createCatDto)
+        return "algo"
+        }
     @Get('find-id')       
-    findOneMore(@Param(`id`)id: number):string{
-    return `Encontrei outro cat ${id}`
-    }
+        findOneMore(@Param(`id`)id: number):string{
+        return `Encontrei outro cat ${id}`
+        }
+    // @Put(':id')
+    // update():string{
+    //     return `update cat...`
+    // }
     @Put(':id')
-    update():string{
-        return `update cat...`
-    }
+        update(@Param('id') id: string, @Body() createCatsDto: CreateCatsDto) {
+        return `This action updates a #${id} cat`;
+        }
     @Delete(':id')
-    delete():string{
-        return`delete cat`
-    }
+        remove(@Param('id') id: string) {
+        return `This action removes a #${id} cat`;
+        }
 
 }
 
