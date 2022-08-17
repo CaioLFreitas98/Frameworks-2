@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { DogsService } from './dogs.service';
-import { CreateDogsDto } from 'src/cats/dto/dogs.dto';
+import { CreateDogsDto } from 'src/dogs/dto/dogs.dto';
 
 
 @Controller('dogs')

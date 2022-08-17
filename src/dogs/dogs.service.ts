@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateDogsDto } from 'src/cats/dto/dogs.dto';
+import { CreateDogsDto } from 'src/dogs/dto/dogs.dto';
 
 @Injectable()
 export class DogsService {
